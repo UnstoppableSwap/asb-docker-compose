@@ -59,7 +59,7 @@ The `config_mainnet.toml` file contains the main configuration for the ASB servi
 
 - `rendezvous_point`: You can add or remove multi addresses of rendezvous points here at which your asb will register
 - `ask_spread`: This defines the market rate your asb will sell it's XMR for. For example: a value of `0.01` means your asb will sell Monero at 1% above market rate
-`min_buy_btc`, `max_buy_btc`: Change these to modify how much your asb is willing to swap at a time
+- `min_buy_btc`, `max_buy_btc`: Change these to modify how much your asb is willing to swap at a time
 
 ## Usage
 
