@@ -82,7 +82,7 @@ services:
       - '--electrum-rpc-addr=0.0.0.0:${ELECTRS_PORT:?}'
       - '--log-filters=INFO'
   mainnet_asb:
-    image: UnstoppableSwap/asb
+    image: unstoppableswap/asb
     restart: unless-stopped
     container_name: mainnet_asb
     depends_on:
