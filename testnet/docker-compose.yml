@@ -84,7 +84,7 @@ services:
       - '--electrum-rpc-addr=0.0.0.0:${ELECTRS_PORT:?}'
       - '--log-filters=INFO'
   stagenet_testnet_asb:
-    image: https://github.com/UnstoppableSwap/xmr-btc-swap.git
+    image: UnstoppableSwap/asb
     restart: unless-stopped
     container_name: stagenet_testnet_asb
     depends_on:
