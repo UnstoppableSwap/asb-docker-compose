@@ -19,6 +19,8 @@ The setup includes the following services:
 
 ## Files
 
+Depending on want network you want to run on, either navigate into the `mainnet` or `testnet` directory.
+
 1. `.env`: Contains environment variables for port configurations.
 2. `config_mainnet.toml`: Configuration file for the asb service.
 3. `docker-compose.yml`: Defines the multi-container Docker application.
