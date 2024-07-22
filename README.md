@@ -4,13 +4,15 @@ This project provides a Docker Compose setup for running an Automated Swap Backe
 
 ## Overview
 
-The setup includes the following services:
+The docker setup includes the following services:
 
-1. monerod: full monero node
-2. monero-wallet-rpc: monero wallet rpc server which manages the monero wallet of the asb
-3. bitcoind: full bitcoin node
-4. electrs: electrum server which connects to bitcoind and gives the asb access to the bitcoin blockchain
-5. [asb](https://github.com/comit-network/xmr-btc-swap/) (automated swap backend): faciliates the atomic swaps by handling cryptography, networking and connecting to the bitcoin and monero blockchain
+| Service | Description | Docker Container Name (Mainnet) | Docker Container Name (Testnet) |
+|---------|-------------|-------------------|-------------------|
+| monerod | Full Monero node | mainnet_monerod | stagenet_monerod |
+| monero-wallet-rpc | Monero wallet RPC server which manages the Monero wallet of the ASB | mainnet_monero-wallet-rpc | stagenet_monero-wallet-rpc |
+| bitcoind | Full Bitcoin node | mainnet_bitcoind | testnet_bitcoind |
+| electrs | Electrum server which connects to bitcoind and gives the ASB access to the Bitcoin blockchain | mainnet_electrs | testnet_electrs |
+| [asb](https://github.com/comit-network/xmr-btc-swap/) | Automated Swap Backend (ASB): facilitates the atomic swaps by handling cryptography, networking and connecting to the Bitcoin and Monero blockchain | mainnet_asb | stagenet_testnet_asb |
 
 ## Prerequisites
 
