@@ -19,11 +19,13 @@ The setup includes the following services:
 
 ## Files
 
-Depending on want network you want to run on, either navigate into the `mainnet` or `testnet` directory.
+Depending on which network you want to run on, navigate into either the `mainnet` or `testnet` directory. Each directory contains the following files:
 
-1. `.env`: Contains environment variables for port configurations.
-2. `config_mainnet.toml` / `config_testnet_stagenet.toml`: Configuration file for the asb service.
-3. `docker-compose.yml`: Defines the multi-container Docker application.
+| File | Mainnet | Testnet/Stagenet | Description |
+|------|---------|------------------|-------------|
+| Environment file | `.env` | `.env` | Contains environment variables for port configurations |
+| ASB configuration | `config_mainnet.toml` | `config_testnet_stagenet.toml` | Configuration file for the ASB service |
+| Docker Compose file | `docker-compose.yml` | `docker-compose.yml` | Defines the multi-container Docker application |
 
 ## Setup
 
@@ -48,20 +50,24 @@ Depending on want network you want to run on, either navigate into the `mainnet`
 
 The `.env` file contains the following port configurations:
 
-- `MONEROD_PORT`: 18081 (monero daemon RPC port)
-- `MONERO_WALLET_RPC_PORT`: 18083 (monero wallet RPC port)
-- `BITCOIND_RPC_PORT`: 8332 (bitcoin Core RPC port)
-- `BITCOIND_P2P_PORT`: 8333 (bitcoin Core P2P port)
-- `ELECTRS_PORT`: 50001 (electrs RPC port)
-- `ASB_PORT`: 9939 (automated swap backend port)
+| Service | Mainnet Port | Testnet/Stagenet Port | Description |
+|---------|--------------|------------------------|-------------|
+| MONEROD_PORT | 18081 | 38081 | Monero daemon RPC port |
+| MONERO_WALLET_RPC_PORT | 18083 | 38083 | Monero wallet RPC port |
+| BITCOIND_RPC_PORT | 8332 | 18332 | Bitcoin Core RPC port |
+| BITCOIND_P2P_PORT | 8333 | 18333 | Bitcoin Core P2P port |
+| ELECTRS_PORT | 50001 | 60001 | Electrs RPC port |
+| ASB_PORT | 9939 | 9839 | Automated swap backend port used by libp2p for network communication |
 
 ### ASB Configuration
 
 The `config_mainnet.toml` / `config_testnet_stagenet.toml` file contains the main configuration for the ASB service. Key settings include:
 
-- `rendezvous_point`: You can add or remove multi addresses of rendezvous points here at which your asb will register
-- `ask_spread`: This defines the market rate your asb will sell it's XMR for. For example: a value of `0.01` means your asb will sell Monero at 1% above market rate
-- `min_buy_btc`, `max_buy_btc`: Change these to modify how much your asb is willing to swap at a time
+| Setting | Description |
+|---------|-------------|
+| `rendezvous_point` | You can add or remove multi addresses of rendezvous points here at which your ASB will register |
+| `ask_spread` | This defines the market rate your ASB will sell its XMR for. For example: a value of `0.01` means your ASB will sell Monero at 1% above market rate |
+| `min_buy_btc`, `max_buy_btc` | Change these to modify how much your ASB is willing to swap at a time |
 
 ## Usage
 
@@ -81,13 +87,15 @@ docker-compose logs -f
 ```
 
 ## Data Persistence
-
 The setup uses Docker volumes for data persistence:
 
-- `mainnet_monerod-data` / `stagenet_monerod-data`
-- `mainnet_monero-wallet-rpc-data` / `stagenet_monero-wallet-rpc-data`
-- `mainnet_bitcoind-data` / `testnet_bitcoind-data`
-- `mainnet_electrs-data` / `testnet_electrs-data`
-- `mainnet_asb-data` / `stagenet_testnet_asb-data`
+| Volume Name (Mainnet) | Volume Name (Testnet) | Description |
+|-------------|-------------|-------------|
+| `mainnet_monerod-data` | `stagenet_monerod-data` | Monero blockchain data |
+| `mainnet_monero-wallet-rpc-data` | `stagenet_monero-wallet-rpc-data` | Monero wallet data |
+| `mainnet_bitcoind-data` | `testnet_bitcoind-data` | Bitcoin blockchain data |
+| `mainnet_electrs-data` | `testnet_electrs-data` | Electrs server data |
+| `mainnet_asb-data` | `stagenet_testnet_asb-data` | ASB persistent data |
+
 
 These volumes ensure that blockchain data and other persistent information are retained between container restarts.
