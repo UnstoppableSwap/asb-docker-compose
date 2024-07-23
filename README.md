@@ -8,11 +8,11 @@ The docker setup includes the following services:
 
 | Service | Description | Docker Container Name (Mainnet) | Docker Container Name (Testnet) |
 |---------|-------------|-------------------|-------------------|
-| monerod | Full Monero node | mainnet_monerod | stagenet_monerod |
-| monero-wallet-rpc | Monero wallet RPC server which manages the Monero wallet of the ASB | mainnet_monero-wallet-rpc | stagenet_monero-wallet-rpc |
-| bitcoind | Full Bitcoin node | mainnet_bitcoind | testnet_bitcoind |
-| electrs | Electrum server which connects to bitcoind and gives the ASB access to the Bitcoin blockchain | mainnet_electrs | testnet_electrs |
-| [asb](https://github.com/comit-network/xmr-btc-swap/) | Automated Swap Backend (ASB): facilitates the atomic swaps by handling cryptography, networking and connecting to the Bitcoin and Monero blockchain | mainnet_asb | stagenet_testnet_asb |
+| monerod | Full Monero node | `mainnet_monerod` | `stagenet_monerod` |
+| monero-wallet-rpc | Monero wallet RPC server which manages the Monero wallet of the ASB | `mainnet_monero-wallet-rpc` | `stagenet_monero-wallet-rpc` |
+| bitcoind | Full Bitcoin node | `mainnet_bitcoind` | `testnet_bitcoind` |
+| electrs | Electrum server which connects to bitcoind and gives the ASB access to the Bitcoin blockchain | `mainnet_electrs` | `testnet_electrs` |
+| [asb](https://github.com/comit-network/xmr-btc-swap/) | Automated Swap Backend (ASB): facilitates the atomic swaps by handling cryptography, networking and connecting to the Bitcoin and Monero blockchain | `mainnet_asb` | `stagenet_testnet_asb` |
 
 ## Prerequisites
 
@@ -54,12 +54,12 @@ The `.env` file contains the following port configurations:
 
 | Service | Mainnet Port | Testnet/Stagenet Port | Description |
 |---------|--------------|------------------------|-------------|
-| MONEROD_PORT | 18081 | 38081 | Monero daemon RPC port |
-| MONERO_WALLET_RPC_PORT | 18083 | 38083 | Monero wallet RPC port |
-| BITCOIND_RPC_PORT | 8332 | 18332 | Bitcoin Core RPC port |
-| BITCOIND_P2P_PORT | 8333 | 18333 | Bitcoin Core P2P port |
-| ELECTRS_PORT | 50001 | 60001 | Electrs RPC port |
-| ASB_PORT | 9939 | 9839 | Port used by the ASB for network communication with peers using Libp2p |
+| `MONEROD_PORT` | 18081 | 38081 | Monero daemon RPC port |
+| `MONERO_WALLET_RPC_PORT` | 18083 | 38083 | Monero wallet RPC port |
+| `BITCOIND_RPC_PORT` | 8332 | 18332 | Bitcoin Core RPC port |
+| `BITCOIND_P2P_PORT` | 8333 | 18333 | Bitcoin Core P2P port |
+| `ELECTRS_PORT` | 50001 | 60001 | Electrs RPC port |
+| `ASB_PORT` | 9939 | 9839 | Port used by the ASB for network communication with peers using Libp2p |
 
 ### ASB Configuration
 
