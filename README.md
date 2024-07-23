@@ -59,7 +59,7 @@ The `.env` file contains the following port configurations:
 | BITCOIND_RPC_PORT | 8332 | 18332 | Bitcoin Core RPC port |
 | BITCOIND_P2P_PORT | 8333 | 18333 | Bitcoin Core P2P port |
 | ELECTRS_PORT | 50001 | 60001 | Electrs RPC port |
-| ASB_PORT | 9939 | 9839 | Automated swap backend port used by libp2p for network communication |
+| ASB_PORT | 9939 | 9839 | Port used by the ASB for network communication with peers using Libp2p |
 
 ### ASB Configuration
 
