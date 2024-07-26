@@ -89,6 +89,15 @@ To view logs:
 docker compose logs -f
 ```
 
+To get a list of all swaps:
+```
+# If you're running on mainnet
+compose exec mainnet_asb asb --config=/asb-data/config_mainnet.toml history
+
+# If you're running on testnet
+docker compose exec stagenet_testnet_asb asb --testnet --config=/asb-data/config_stagenet_testnet.toml history
+```
+
 ## Data Persistence
 The setup uses Docker volumes for data persistence:
 
