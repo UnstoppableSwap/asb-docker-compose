@@ -43,7 +43,7 @@ Depending on which network you want to run on, navigate into either the `mainnet
 
 4. Start the services:
    ```
-   docker-compose up -d
+   docker compose up -d
    ```
 
 ## Configuration
@@ -73,19 +73,20 @@ The `config_mainnet.toml` / `config_testnet_stagenet.toml` file contains the mai
 
 ## Usage
 
-To start the services / to update docker images to latest version:
+To start the services and to update docker images to latest version:
 ```
-docker-compose up -d
+docker compose pull
+docker compose up -d
 ```
 
 To stop the services:
 ```
-docker-compose down
+docker compose down
 ```
 
 To view logs:
 ```
-docker-compose logs -f
+docker compose logs -f
 ```
 
 ## Data Persistence
