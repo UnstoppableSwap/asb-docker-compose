@@ -73,23 +73,23 @@ The `config_mainnet.toml` / `config_testnet_stagenet.toml` file contains the mai
 
 ## Usage
 
-To start the services and to update docker images to latest version:
+### To start the services and to update docker images to latest version:
 ```
 docker compose pull
 docker compose up -d
 ```
 
-To stop the services:
+### To stop the services:
 ```
 docker compose down
 ```
 
-To view logs:
+### To view logs:
 ```
 docker compose logs -f
 ```
 
-To get a list of all swaps:
+### To get a list of all swaps:
 ```
 # If you're running on mainnet
 compose exec mainnet_asb asb --config=/asb-data/config_mainnet.toml history
@@ -98,6 +98,30 @@ compose exec mainnet_asb asb --config=/asb-data/config_mainnet.toml history
 docker compose exec stagenet_testnet_asb asb --testnet --config=/asb-data/config_stagenet_testnet.toml history
 ```
 
+### To export the wallet descriptor of the internal Bitcoin wallet:
+
+**Mainnet**
+```bash
+# Stop the ASB service. This releases the lock on the Bitcoin wallet
+docker compose stop mainnet_asb
+
+# Run the export command
+docker compose run --rm mainnet_asb asb --config=/asb-data/config_mainnet.toml export-bitcoin-wallet
+
+# Start the ASB again
+docker compose start mainnet_asb
+```
+**Testnet:**
+```bash
+# Stop the ASB service. This releases the lock on the Bitcoin wallet
+docker compose stop stagenet_testnet_asb
+
+# Run the export command
+docker compose run --rm stagenet_testnet_asb asb --testnet --config=/asb-data/config_stagenet_testnet.toml export-bitcoin-wallet
+
+# Start the ASB again
+docker compose start stagenet_testnet_asb
+```
 ## Data Persistence
 The setup uses Docker volumes for data persistence:
 
