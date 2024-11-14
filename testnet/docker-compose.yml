@@ -83,16 +83,16 @@ services:
       - '--db-dir=/electrs-data/db'
       - '--electrum-rpc-addr=0.0.0.0:${ELECTRS_PORT:?}'
       - '--log-filters=INFO'
-  stagenet_testnet_asb:
-    image: unstoppableswap/asb:latest
+  testnet_asb:
+    image: ghcr.io/unstoppableswap/asb:latest
     restart: unless-stopped
-    container_name: stagenet_testnet_asb
+    container_name: testnet_asb
     depends_on:
       - stagenet_monero-wallet-rpc
       - testnet_electrs
     volumes:
       - './config_stagenet_testnet.toml:/asb-data/config_stagenet_testnet.toml'
-      - 'stagenet_testnet_asb-data:/asb-data'
+      - 'testnet_asb-data:/asb-data'
     ports:
       - '0.0.0.0:${ASB_PORT:?}:${ASB_PORT:?}'
     entrypoint: ''
@@ -107,4 +107,4 @@ volumes:
   stagenet_monero-wallet-rpc-data:
   testnet_bitcoind-data:
   testnet_electrs-data:
-  stagenet_testnet_asb-data:
+  testnet_asb-data:

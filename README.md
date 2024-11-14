@@ -12,7 +12,7 @@ The docker setup includes the following services:
 | monero-wallet-rpc | Monero wallet RPC server which manages the Monero wallet of the ASB | `mainnet_monero-wallet-rpc` | `stagenet_monero-wallet-rpc` |
 | bitcoind | Full Bitcoin node | `mainnet_bitcoind` | `testnet_bitcoind` |
 | electrs | Electrum server which connects to bitcoind and gives the ASB access to the Bitcoin blockchain | `mainnet_electrs` | `testnet_electrs` |
-| [asb](https://github.com/comit-network/xmr-btc-swap/) | Automated Swap Backend (ASB): facilitates the atomic swaps by handling cryptography, networking and connecting to the Bitcoin and Monero blockchain | `mainnet_asb` | `stagenet_testnet_asb` |
+| [asb](https://github.com/comit-network/xmr-btc-swap/) | Automated Swap Backend (ASB): facilitates the atomic swaps by handling cryptography, networking and connecting to the Bitcoin and Monero blockchain | `mainnet_asb` | `testnet_asb` |
 
 ## Prerequisites
 
@@ -95,7 +95,7 @@ To get a list of all swaps:
 compose exec mainnet_asb asb --config=/asb-data/config_mainnet.toml history
 
 # If you're running on testnet
-docker compose exec stagenet_testnet_asb asb --testnet --config=/asb-data/config_stagenet_testnet.toml history
+docker compose exec testnet_asb asb --testnet --config=/asb-data/config_stagenet_testnet.toml history
 ```
 
 ## Data Persistence
@@ -107,7 +107,7 @@ The setup uses Docker volumes for data persistence:
 | `mainnet_monero-wallet-rpc-data` | `stagenet_monero-wallet-rpc-data` | Monero wallet data |
 | `mainnet_bitcoind-data` | `testnet_bitcoind-data` | Bitcoin blockchain data |
 | `mainnet_electrs-data` | `testnet_electrs-data` | Electrs server data |
-| `mainnet_asb-data` | `stagenet_testnet_asb-data` | ASB persistent data |
+| `mainnet_asb-data` | `testnet_asb-data` | ASB persistent data |
 
 
 These volumes ensure that blockchain data and other persistent information are retained between container restarts.
