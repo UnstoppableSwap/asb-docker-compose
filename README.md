@@ -95,7 +95,7 @@ To get a list of all swaps:
 compose exec mainnet_asb asb --config=/asb-data/config_mainnet.toml history
 
 # If you're running on testnet
-docker compose exec testnet_asb asb --testnet --config=/asb-data/config_stagenet_testnet.toml history
+docker compose exec testnet_asb asb --testnet --config=/asb-data/config_testnet.toml history
 ```
 
 ## Data Persistence
