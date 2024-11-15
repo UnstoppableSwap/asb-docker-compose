@@ -91,7 +91,7 @@ services:
       - stagenet_monero-wallet-rpc
       - testnet_electrs
     volumes:
-      - './config_stagenet_testnet.toml:/asb-data/config_stagenet_testnet.toml'
+      - './config_testnet.toml:/asb-data/config_testnet.toml'
       - 'testnet_asb-data:/asb-data'
     ports:
       - '0.0.0.0:${ASB_PORT:?}:${ASB_PORT:?}'
@@ -100,7 +100,7 @@ services:
       - 'asb'
       - '--testnet'
       - '--json'
-      - '--config=/asb-data/config_stagenet_testnet.toml'
+      - '--config=/asb-data/config_testnet.toml'
       - 'start'
 volumes:
   stagenet_monerod-data:
