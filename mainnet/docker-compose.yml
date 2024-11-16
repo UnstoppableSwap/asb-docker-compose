@@ -1,7 +1,8 @@
 services:
   mainnet_monerod:
-    image: rinocommunity/monero:v0.18.2.2
+    image: ghcr.io/sethforprivacy/simple-monerod:v0.18.3.4
     restart: unless-stopped
+    user: root
     container_name: mainnet_monerod
     volumes:
       - 'mainnet_monerod-data:/monerod-data/'
@@ -19,8 +20,9 @@ services:
       - '--data-dir=/monerod-data/mainnet'
   mainnet_monero-wallet-rpc:
     container_name: mainnet_monero-wallet-rpc
-    image: rinocommunity/monero:v0.18.2.2
+    image: ghcr.io/sethforprivacy/simple-monero-wallet-rpc:v0.18.3.4
     restart: unless-stopped
+    user: root
     depends_on:
       - mainnet_monerod
     volumes:
