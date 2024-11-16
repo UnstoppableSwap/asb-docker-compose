@@ -1,7 +1,6 @@
-version: '3'
 services:
   stagenet_monerod:
-    image: rinocommunity/monero:v0.18.1.2
+    image: rinocommunity/monero:v0.18.2.2
     restart: unless-stopped
     container_name: stagenet_monerod
     volumes:
@@ -21,7 +20,7 @@ services:
       - '--stagenet'  # Added for stagenet
   stagenet_monero-wallet-rpc:
     container_name: stagenet_monero-wallet-rpc
-    image: rinocommunity/monero:v0.18.1.2
+    image: rinocommunity/monero:v0.18.2.2
     restart: unless-stopped
     depends_on:
       - stagenet_monerod
@@ -42,7 +41,7 @@ services:
       - '--stagenet'  # Added for stagenet
   testnet_bitcoind:
     container_name: testnet_bitcoind
-    image: ruimarinho/bitcoin-core:latest
+    image: getumbrel/bitcoind:v28.0
     restart: unless-stopped
     volumes:
       - 'testnet_bitcoind-data:/bitcoind-data/'
@@ -63,7 +62,7 @@ services:
       - '-dbcache=16384'
   testnet_electrs:
     container_name: testnet_electrs
-    image: getumbrel/electrs:v0.9.9
+    image: getumbrel/electrs:v0.10.6
     restart: unless-stopped
     user: root
     depends_on:
