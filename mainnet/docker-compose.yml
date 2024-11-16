@@ -1,7 +1,6 @@
-version: '3'
 services:
   mainnet_monerod:
-    image: rinocommunity/monero:v0.18.1.2
+    image: rinocommunity/monero:v0.18.2.2
     restart: unless-stopped
     container_name: mainnet_monerod
     volumes:
@@ -20,7 +19,7 @@ services:
       - '--data-dir=/monerod-data/mainnet'
   mainnet_monero-wallet-rpc:
     container_name: mainnet_monero-wallet-rpc
-    image: rinocommunity/monero:v0.18.1.2
+    image: rinocommunity/monero:v0.18.2.2
     restart: unless-stopped
     depends_on:
       - mainnet_monerod
@@ -40,7 +39,7 @@ services:
       - '--trusted-daemon'
   mainnet_bitcoind:
     container_name: mainnet_bitcoind
-    image: ruimarinho/bitcoin-core:latest
+    image: getumbrel/bitcoind:v28.0
     restart: unless-stopped
     volumes:
       - 'mainnet_bitcoind-data:/bitcoind-data/'
@@ -61,7 +60,7 @@ services:
       - '-dbcache=16384'
   mainnet_electrs:
     container_name: mainnet_electrs
-    image: getumbrel/electrs:v0.9.9
+    image: getumbrel/electrs:v0.10.6
     restart: unless-stopped
     user: root
     depends_on:
