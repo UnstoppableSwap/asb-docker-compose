@@ -1,6 +1,6 @@
 services:
   mainnet_monerod:
-    image: ghcr.io/sethforprivacy/simple-monerod:v0.18.3.4
+    image: ghcr.io/sethforprivacy/simple-monerod:v0.18.4.0
     restart: unless-stopped
     user: root
     container_name: mainnet_monerod
@@ -20,7 +20,7 @@ services:
       - '--data-dir=/monerod-data/mainnet'
   mainnet_monero-wallet-rpc:
     container_name: mainnet_monero-wallet-rpc
-    image: ghcr.io/sethforprivacy/simple-monero-wallet-rpc:v0.18.3.4
+    image: ghcr.io/sethforprivacy/simple-monero-wallet-rpc:v0.18.4.0
     restart: unless-stopped
     user: root
     depends_on:
