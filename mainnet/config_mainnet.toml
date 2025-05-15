@@ -2,7 +2,7 @@
 dir = "/asb-data/"
 
 [network]
-listen = ["/ip4/0.0.0.0/tcp/9939", "/ip4/0.0.0.0/tcp/9940/ws"]
+listen = ["/ip4/0.0.0.0/tcp/9939"]
 external_addresses = []
 rendezvous_point = ["/dns4/discover.unstoppableswap.net/tcp/8888/p2p/12D3KooWA6cnqJpVnreBVnoro8midDL9Lpzmg8oJPoAGi7YYaamE", "/dns4/eratosthen.es/tcp/7798/p2p/12D3KooWAh7EXXa2ZyegzLGdjvj1W4G3EXrTGrf6trraoT1MEobs"]
 
@@ -16,8 +16,8 @@ wallet_rpc_url = "http://mainnet_monero-wallet-rpc:18083/json_rpc"
 network = "Mainnet"
 
 [tor]
-control_port = 9051
-socks5_port = 9050
+register_hidden_service = true
+hidden_service_num_intro_points = 10
 
 [maker]
 min_buy_btc = 0.0004
