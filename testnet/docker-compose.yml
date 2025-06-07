@@ -57,6 +57,7 @@ services:
       - '-chain=test'  # Changed to testnet
       - '-server=1'
       - '-prune=0'
+      - '-txindex=1'
       - '-rpcallowip=0.0.0.0/0'
       - '-rpcbind=0.0.0.0:${BITCOIND_RPC_PORT:?}'
       - '-bind=0.0.0.0:${BITCOIND_P2P_PORT:?}'
