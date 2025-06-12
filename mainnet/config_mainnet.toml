@@ -11,7 +11,7 @@ rendezvous_point = [
 ]
 
 [bitcoin]
-electrum_rpc_url = "tcp://mainnet_electrs:50001"
+electrum_rpc_urls = ["tcp://mainnet_electrs:50001"]
 target_block = 1
 network = "Mainnet"
 
