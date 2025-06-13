@@ -16,7 +16,7 @@ target_block = 1
 network = "Mainnet"
 
 [monero]
-wallet_rpc_url = "http://mainnet_monero-wallet-rpc:18083/json_rpc"
+daemon_url = "http://mainnet_monerod:18081"
 network = "Mainnet"
 
 [tor]
