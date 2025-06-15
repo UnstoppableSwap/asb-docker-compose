@@ -67,7 +67,6 @@ services:
     restart: unless-stopped
     container_name: mainnet_asb
     depends_on:
-      - mainnet_monero-wallet-rpc
       - mainnet_electrs
     volumes:
       - './config_mainnet.toml:/asb-data/config_mainnet.toml'

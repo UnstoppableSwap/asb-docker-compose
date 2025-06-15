@@ -68,7 +68,6 @@ services:
     restart: unless-stopped
     container_name: testnet_asb
     depends_on:
-      - stagenet_monero-wallet-rpc
       - testnet_electrs
     volumes:
       - './config_testnet.toml:/asb-data/config_testnet.toml'
