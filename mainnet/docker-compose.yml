@@ -18,27 +18,6 @@ services:
       - '--non-interactive'
       - '--enable-dns-blocklist'
       - '--data-dir=/monerod-data/mainnet'
-  mainnet_monero-wallet-rpc:
-    container_name: mainnet_monero-wallet-rpc
-    image: ghcr.io/sethforprivacy/simple-monero-wallet-rpc:v0.18.4.0
-    restart: unless-stopped
-    user: root
-    depends_on:
-      - mainnet_monerod
-    volumes:
-      - 'mainnet_monero-wallet-rpc-data:/monero-wallet-rpc-data/'
-    expose:
-      - ${MONERO_WALLET_RPC_PORT:?}
-    entrypoint: ''
-    command:
-      - monero-wallet-rpc
-      - '--rpc-bind-ip=0.0.0.0'
-      - '--rpc-bind-port=${MONERO_WALLET_RPC_PORT:?}'
-      - '--confirm-external-bind'
-      - '--daemon-address=mainnet_monerod:${MONEROD_PORT:?}'
-      - '--wallet-dir=/monero-wallet-rpc-data/'
-      - '--disable-rpc-login'
-      - '--trusted-daemon'
   mainnet_bitcoind:
     container_name: mainnet_bitcoind
     image: getumbrel/bitcoind:v28.0
@@ -84,11 +63,10 @@ services:
       - '--electrum-rpc-addr=0.0.0.0:${ELECTRS_PORT:?}'
       - '--log-filters=INFO'
   mainnet_asb:
-    image: ghcr.io/unstoppableswap/asb:latest
+    image: ghcr.io/unstoppableswap/asb:monero-sys-preview
     restart: unless-stopped
     container_name: mainnet_asb
     depends_on:
-      - mainnet_monero-wallet-rpc
       - mainnet_electrs
     volumes:
       - './config_mainnet.toml:/asb-data/config_mainnet.toml'
@@ -103,7 +81,7 @@ services:
       - 'start'
 volumes:
   mainnet_monerod-data:
-  mainnet_monero-wallet-rpc-data:
+  mainnet_monero-wallet-rpc-data: # Keeping this here for now to avoid the volume being pruned by docker
   mainnet_bitcoind-data:
   mainnet_electrs-data:
   mainnet_asb-data:

@@ -19,28 +19,6 @@ services:
       - '--enable-dns-blocklist'
       - '--data-dir=/monerod-data/stagenet'
       - '--stagenet'  # Added for stagenet
-  stagenet_monero-wallet-rpc:
-    container_name: stagenet_monero-wallet-rpc
-    image: ghcr.io/sethforprivacy/simple-monero-wallet-rpc:v0.18.4.0
-    restart: unless-stopped
-    user: root
-    depends_on:
-      - stagenet_monerod
-    volumes:
-      - 'stagenet_monero-wallet-rpc-data:/monero-wallet-rpc-data/'
-    expose:
-      - ${MONERO_WALLET_RPC_PORT:?}
-    entrypoint: ''
-    command:
-      - monero-wallet-rpc
-      - '--rpc-bind-ip=0.0.0.0'
-      - '--rpc-bind-port=${MONERO_WALLET_RPC_PORT:?}'
-      - '--confirm-external-bind'
-      - '--daemon-address=stagenet_monerod:${MONEROD_PORT:?}'
-      - '--wallet-dir=/monero-wallet-rpc-data/'
-      - '--disable-rpc-login'
-      - '--trusted-daemon'
-      - '--stagenet'  # Added for stagenet
   testnet_bitcoind:
     container_name: testnet_bitcoind
     image: getumbrel/bitcoind:v28.0
@@ -86,11 +64,10 @@ services:
       - '--electrum-rpc-addr=0.0.0.0:${ELECTRS_PORT:?}'
       - '--log-filters=INFO'
   testnet_asb:
-    image: ghcr.io/unstoppableswap/asb:latest
+    image: ghcr.io/unstoppableswap/asb:monero-sys-preview
     restart: unless-stopped
     container_name: testnet_asb
     depends_on:
-      - stagenet_monero-wallet-rpc
       - testnet_electrs
     volumes:
       - './config_testnet.toml:/asb-data/config_testnet.toml'
@@ -106,7 +83,7 @@ services:
       - 'start'
 volumes:
   stagenet_monerod-data:
-  stagenet_monero-wallet-rpc-data:
+  stagenet_monero-wallet-rpc-data: # Keeping this here for now to avoid the volume being pruned by docker
   testnet_bitcoind-data:
   testnet_electrs-data:
   testnet_asb-data:

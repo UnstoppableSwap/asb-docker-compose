@@ -16,7 +16,7 @@ target_block = 1
 network = "Testnet"
 
 [monero]
-wallet_rpc_url = "http://stagenet_monero-wallet-rpc:38083/json_rpc"
+daemon_url = "http://stagenet_monerod:38081"
 network = "Stagenet"
 
 [tor]
